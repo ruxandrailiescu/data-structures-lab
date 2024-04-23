@@ -51,7 +51,7 @@ void printList(ListNode* headList)
 	{
 		printStudent(tmp->info);
 		tmp = tmp->next;
-	} while (tmp != NULL);
+	} while (tmp != headList);
 }
 
 void makeListCircular(ListNode** headList)
@@ -64,4 +64,24 @@ void makeListCircular(ListNode** headList)
 		}
 		tmp->next = (*headList);
 	}
+}
+
+bool isCircular(ListNode* head) {
+	
+	// if list is empty => not circular
+	if (head == NULL)
+		return false;
+
+	ListNode* slow = head;
+	ListNode* fast = head;
+
+	while (fast != NULL && fast->next != NULL) {
+		slow = slow->next;
+		fast = fast->next->next;
+
+		if (slow == fast) {
+			return true;
+		}
+	}
+	return false;
 }
