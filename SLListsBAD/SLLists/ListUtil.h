@@ -5,7 +5,7 @@ typedef struct Node
 {
 	Student* info;
 	struct Node* next;
-}ListNode, * PListNode;
+}ListNode, *PListNode;
 
 ListNode* createNode(Student* stud)
 {
