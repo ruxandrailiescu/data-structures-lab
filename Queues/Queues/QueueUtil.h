@@ -59,6 +59,27 @@ Student* popNode(QueueNode** tail)
 	return result;
 }
 
+//Student* getNode(QueueNode** tailQueue)
+//{
+//	Student* result = NULL;
+//	if (*tailQueue != NULL)
+//	{
+//		result = (*tailQueue)->next->info;
+//		if ((*tailQueue)->next == (*tailQueue))
+//		{
+//			free(*tailQueue);
+//			(*tailQueue) = NULL;
+//		}
+//		else
+//		{
+//			QueueNode* head = (*tailQueue)->next;
+//			(*tailQueue)->next = head->next;
+//			free(head);
+//		}
+//	}
+//	return result;
+//}
+
 void displayQueue(QueueNode** tail)
 {
 	Student* info = peekNode(*tail);
@@ -71,3 +92,16 @@ void displayQueue(QueueNode** tail)
 		tmp = peekNode(*tail);
 	}
 }
+
+//void displayQueue(QueueNode** tailQueue)
+//{
+//	Student* info = peekNode(*tailQueue);
+//	Student* tmp = NULL;
+//	while (tmp != info)
+//	{
+//		tmp = getNode(tailQueue);
+//		putNode(tailQueue, tmp);
+//		printStudent(tmp);
+//		tmp = peekNode(*tailQueue);
+//	}
+//}
