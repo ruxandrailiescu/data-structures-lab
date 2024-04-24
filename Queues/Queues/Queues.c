@@ -25,9 +25,15 @@ void main()
 		}
 		displayQueue(&tailQueue);
 		printf("\n\n");
-		while (tailQueue)
-		{
-			popNode(&tailQueue);
-		}
+		Student* stud1 = peekNode(tailQueue);
+		printStudent(stud1);
+		printf("\n\n");
+		stud1 = popNode(&tailQueue);
+		printStudent(stud1);
+		printf("\n\n");
+		stud1 = popNode(&tailQueue);
+		printStudent(stud1);
+		printf("\n\n");
+		displayQueue(&tailQueue);
 	}
 }

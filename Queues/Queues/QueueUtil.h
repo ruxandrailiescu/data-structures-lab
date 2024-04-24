@@ -54,7 +54,6 @@ Student* popNode(QueueNode** tail)
 		// tmp->next->next == NULL
 		// set next pointer of tmp == NULL to remove head
 		result = tmp->next->info;
-		printStudent(result);
 		tmp->next = NULL;
 	}
 	return result;
