@@ -44,7 +44,7 @@ ListNode* mergeList(ListNode*, ListNode*);
 ListNode* testMerge(ListNode*, ListNode*);
 
 
-void main()
+void ModelTest()
 {
 	
 }
