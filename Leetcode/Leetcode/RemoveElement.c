@@ -23,7 +23,7 @@ int removeElement(int** nums, int numsSize, int val)
 	return k;
 }
 
-void main()
+void mainRE()
 {
 	int* nums = NULL;
 	int numsSize = 0;

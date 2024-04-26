@@ -9,7 +9,9 @@ typedef struct NodeS
 
 StackNode* createStackNode(Student* info)
 {
+	// allocate memory
 	StackNode* node = (StackNode*)malloc(sizeof(StackNode));
+	// init node
 	node->info = info;
 	node->next = NULL;
 	return node;
@@ -57,16 +59,20 @@ void deleteStack(StackNode** stack)
 
 void displayStack(StackNode** stack)
 {
-	StackNode* tmp = NULL;
-	while (*stack)
+	StackNode* tmpStack = NULL;
+	while ((*stack))
 	{
+		// get info by popping
 		Student* info = popNode(stack);
 		printStudent(info);
-		tmp = pushNode(tmp, info);
+		// pushing info back on stack, reversing the order of elements
+		// from original stack
+		tmpStack = pushNode(tmpStack, info);
 	}
-	while (tmp)
+	while (tmpStack)
 	{
-		Student* info = popNode(&tmp);
+		// restore the original order of elements in the stack
+		Student* info = popNode(&tmpStack);
 		*stack = pushNode(*stack, info);
 	}
 }
