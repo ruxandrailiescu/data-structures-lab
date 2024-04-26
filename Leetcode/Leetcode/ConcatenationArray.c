@@ -24,7 +24,7 @@ int* getConcatenation(int* nums, int numsSize)
 	return ans;
 }
 
-void main()
+void mainCA()
 {
 	int* nums = NULL;
 	int numsSize = 0;
