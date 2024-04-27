@@ -1,4 +1,5 @@
 #include "main.h"
+#include <ctype.h>
 
 // Leetcode #682
 
@@ -6,61 +7,101 @@
 
 typedef struct NodeS
 {
-	char* info;
+	int value;
 	struct NodeS* next;
-} StackNode;
+}StackNode;
 
-StackNode* createNode(char* info)
-{	
-	if (info == NULL)
-		return NULL;
-	// allocate memory
+StackNode* createNode(int value)
+{
 	StackNode* node = (StackNode*)malloc(sizeof(StackNode));
-	// init node
-	node->info = (char*)malloc(strlen(info));
-	strcpy(node->info, info);
+	node->value = value;
 	node->next = NULL;
 	return node;
 }
 
-StackNode* pushNode(StackNode* stack, char* info)
+void pushNode(StackNode** stack, int value)
 {
-	StackNode* node = createNode(info);
-	node->next = stack;
-	return node;
+	StackNode* node = createNode(value);
+	if (*stack != NULL)
+	{
+		node->next = *stack;
+	}
+	*stack = node;
 }
 
-char* peekNode(StackNode* stack)
+int peekNode(StackNode* stack)
 {
-	char* info = NULL;
 	if (stack != NULL)
 	{
-		info = (char*)malloc(strlen(stack->info));
-		strcpy(info, stack->info);
+		int value = stack->value;
+		return value;
 	}
-	return info;
+	return 0;
 }
 
-char* popNode(StackNode** stack)
+int popNode(StackNode** stack)
 {
-	char* info = NULL;
 	if ((*stack) != NULL)
 	{
-		info = (char*)malloc(strlen((*stack)->info));
-		strcpy(info, (*stack)->info);
+		int value = (*stack)->value;
 		StackNode* tmp = (*stack);
 		(*stack) = tmp->next;
 		free(tmp);
+		return value;
 	}
-	return info;
+	return 0;
 }
 
 int calPoints(char** operations, int operationsSize)
 {
+	if (operations == NULL || operationsSize == 0)
+		return 0;
+	
+	int points = 0;
+	StackNode* stack = NULL;
 
+	for (int i = 0; i < operationsSize; i++)
+	{
+		if (strcmp(operations[i], "C") == 0)
+		{
+			int value = popNode(&stack);
+			printf("\nPopped value: %d", value);
+		}
+		else if (strcmp(operations[i], "D") == 0)
+		{
+			int value = peekNode(stack);
+			pushNode(&stack, value * 2);
+		}
+		else if (strcmp(operations[i], "+") == 0)
+		{
+			int value1 = popNode(&stack);
+			int value2 = peekNode(stack);
+			pushNode(&stack, value1);
+			pushNode(&stack, value1 + value2);
+		}
+		else
+		{
+			int value = atoi(operations[i]);
+			pushNode(&stack, value);
+		}
+	}
+
+	while (stack)
+	{
+		points += popNode(&stack);
+	}
+	return points;
 }
 
 void main()
 {
-
+	char** ops = (char**)malloc(sizeof(char*) * 5);
+	for (int i = 0; i < 5; i++)
+	{
+		ops[i] = (char*)malloc(sizeof(char));
+		printf("\nEnter operation %d: ", i + 1);
+		scanf("%s", ops[i]);
+	}
+	int points = calPoints(ops, 5);
+	printf("\nPoints: %d", points);
 }

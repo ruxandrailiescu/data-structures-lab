@@ -17,10 +17,14 @@ StackNode* createStackNode(Student* info)
 	return node;
 }
 
-StackNode* pushNode(StackNode* stack, Student* info)
+StackNode* pushNode(StackNode** stack, Student* info)
 {
 	StackNode* node = createStackNode(info);
-	node->next = stack;
+	if (*stack != NULL)
+	{
+		node->next = *stack;
+	}
+	*stack = node;
 	return node;
 }
 
