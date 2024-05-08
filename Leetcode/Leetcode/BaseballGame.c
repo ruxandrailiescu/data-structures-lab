@@ -93,7 +93,7 @@ int calPoints(char** operations, int operationsSize)
 	return points;
 }
 
-void main()
+void mainBG()
 {
 	char** ops = (char**)malloc(sizeof(char*) * 5);
 	for (int i = 0; i < 5; i++)
