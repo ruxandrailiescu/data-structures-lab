@@ -160,7 +160,7 @@ void minStackFree(MinStack* obj) {
  * minStackFree(obj);
 */
 
-void mainMS() {
+void main() {
 
 	MinStack* obj = minStackCreate();
 	minStackPush(obj, 2);

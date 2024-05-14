@@ -26,12 +26,5 @@ void main()
 		printf("\n\n");
 		makeListCircular(&headList);
 		printList(headList);
-		
-		if (isCircular(headList)) {
-			printf("\n\nIs circular");
-		}
-		else {
-			printf("\n\nIs NOT circular");
-		}
 	}
 }
