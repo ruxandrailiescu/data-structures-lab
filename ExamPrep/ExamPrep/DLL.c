@@ -3,7 +3,7 @@
 
 #define LINE_SIZE 256
 
-void main()
+void DLL()
 {
 	Node* head = NULL;
 	Node* head2 = NULL;
