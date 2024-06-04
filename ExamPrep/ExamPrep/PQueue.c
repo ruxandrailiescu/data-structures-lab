@@ -1,19 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "QueueUtil.h"
+#include "PQueueUtil.h"
 
 #define LINE_SIZE 256
 
-void Queue()
+void main()
 {
-	QueueNode* tailQueue = NULL;
+	PQueue pQueue = { .items = NULL, .currentIndex = 0, .size = 0 };
 	FILE* pFile = fopen("Data.txt", "r");
 	if (pFile)
 	{
 		char delimiter[] = ",";
 		char* token = NULL;
-		float income;
+		float income; int index = 0;
 		unsigned short reference;
 		char buffer[LINE_SIZE], name[LINE_SIZE];
+		
 		while (fgets(buffer, sizeof(buffer), pFile))
 		{
 			token = strtok(buffer, delimiter);
@@ -23,8 +24,12 @@ void Queue()
 			token = strtok(NULL, delimiter);
 			reference = atoi(token);
 			Student* stud = createStudent(name, income, reference);
-			putNodeQueue(&tailQueue, stud);
+			enqueue(&pQueue, stud);
 		}
 	}
-	displayQueue(tailQueue);
+
+	changePrio(&pQueue, 0, 500);
+
+	Student* info = deque(&pQueue);
+	printStudent(info);
 }
