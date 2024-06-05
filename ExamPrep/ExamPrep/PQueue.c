@@ -3,7 +3,7 @@
 
 #define LINE_SIZE 256
 
-void main()
+void PrioQueue()
 {
 	PQueue pQueue = { .items = NULL, .currentIndex = 0, .size = 0 };
 	FILE* pFile = fopen("Data.txt", "r");
