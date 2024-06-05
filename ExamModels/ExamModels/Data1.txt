@@ -1,0 +1,9 @@
+1121,Complex Nordis,Ionescu Mihai,5,152.0
+1423,Mall Bucuresti,Gavrilescu Elena,7,182.0
+1114,Domeniu Ski Brasov,Istrate Ana,4,200.0
+1782,Mall Constanta,Popescu Andreea,4,196.0
+1087,Complex Atria,Anghelescu Alexandru,4,110.0
+1021,Mall Afi,Ionescu Mihai,6,100.0
+500,Mall Baneasa,Ionescu Mihai,10,200.0
+325,Complex Chitila,Ionescu Mihai,3,50.0
+2001,Domnesti Residence,Ionescu Mihai,6,25.0

@@ -1,7 +1,7 @@
 #define LINE_SIZE 256
 #include "BST.h"
 
-void main()
+void BST()
 {
 	TreeNode* root = NULL;
 	FILE* pFile = fopen("Data.txt", "r");
