@@ -1,0 +1,8 @@
+4,210,Double,300
+5,305,Single,210
+10,670,Double,700
+5,400,Double,350
+7,808,Triple,1000
+2,104,Single,200
+4,215,Double,300
+4,230,Single,500

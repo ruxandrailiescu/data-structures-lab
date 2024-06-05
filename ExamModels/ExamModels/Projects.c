@@ -1,7 +1,7 @@
 #define LINE_SIZE 256
 #include "DLL.h"
 
-void main()
+void DLL()
 {
 	ListNode* head = NULL;
 	FILE* pFile = fopen("Data1.txt", "r");
