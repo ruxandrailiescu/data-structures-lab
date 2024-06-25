@@ -1,0 +1,6 @@
+1,Alex Ardelean,Dr. Popescu,Nu,3,100.5
+2,Ruxandra Iliescu,Dr. Ionescu,Nu,5,200.2
+3,Ana Boncu,Dr. Ionescu,Da,2,400.6
+1,Ambra Barbu,Dr. Popescu,Da,5,100.2
+4,Sabina Andrici,Dr. Popescu,Da,3,100.5
+5,Tia Girica,Dr. Ionescu,Da,4,300.3
