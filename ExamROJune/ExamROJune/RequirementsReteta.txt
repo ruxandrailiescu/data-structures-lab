@@ -1,0 +1,43 @@
+Bilet 2
+
+Implementati o aplicatie in limbajul C ce rezolva probleme de gestionare a retetelor emise de medici.
+
+1. Definiti structura Reteta ce contine: numarul retetei (unsigned int), numele pacientului (char*),
+numele medicului care a emis reteta (char*), statut special (char*), numar de medicamente (unsigned char),
+procent compensare (float).
+
+Creati o structura lista dubla cu cel putin 5 retete ale caror date sunt preluate dintr-un fisier text.
+Crearea structurii se realizeaza prin apel repetat al unei functii de inserare a unei retete in interiorul
+listei pe baza pozitiei specificate ca parametru al functiei. (2p)
+(*) aditional: functie de inserare in ordine crescatoare/descrescatoare pe baza procentului de compensare
+
+2. Implementati functia care determina numarul de retete avand numar de medicamente peste un prag specificat
+ca parametru al functiei. Functia implementata se apeleaza in functia main(), iar rezultatul apelului se afiseaza
+in consola de executie a aplicatiei. (1p)
+
+3. Implementati functia care actualizeaza procentul de compensare pentru un pacient avand numele specificat ca 
+parametru al functiei. Functia implementata se apeleaza in functia main(), iar rezultatul apelului se valideaza
+prin traversarea listei duble in ambele sensuri. (1p)
+
+4. Implementati functia care sterge nodurile in lista dubla de mai sus pentru nodurile cu numar de medicamente mai
+mic decat un prag specificat ca parametru al functiei. Functia implementata se apeleaza in functia main(), iar 
+rezultatul apelului se valideaza prin traversarea listei duble in ambele sensuri. (2.5p)
+
+5. Implementati functia care salveaza intr-o structura de tip Tabela de dispersie (chaining) datele retetelor pentru
+acelasi medic precizat ca parametru al functiei. Cheia structurii Tabela de dispersie este numar reteta, iar cele
+doua structuri (Lista dubla si Tabela de dispersie) nu partajeaza memorie la nivelul datelor de tip Reteta. Functia
+implementata se apeleaza in functia main(), iar rezultatul apelului (tabela de dispersie) se afiseaza in consola de
+executie a aplicatiei. (2.5p)
+(*) aditional: collision mechanism - linear probing/quadratic probing + the list shares HEAP memory space with the
+elements found in the new structure and all the nodes should be displayed (array manipulation) in the main function
+after the complete creation of the structure
+(*) aditional: collision mechanism - re-hashing
+(*) aditional: collision mechanism - overflow area
+
+Urmatoarele aspecte trebuie considerate cu privire la implementare:
+- Punctul din oficiu se va aduna separat.
+- Nota minima de promovare este 5.
+- Functiile implementate se refera la structura specificata in acest bilet.
+- Implementarea NU determina aparitia de memory leaks pentru operatiile specificate in cerinte.
+- Functiile implementate NU contin apeluri de functii standard privind opratii de I/O cu dispozitive
+standard (ex: printf, scanf, etc). Exceptii: functia main(), functii de traversare, functii de afisare.
