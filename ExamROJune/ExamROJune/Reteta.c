@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 1. Crearea structurii Reteta si a Listei Duble
-//    Operatii: creareReteta, afisareReteta, stergereReteta
+// 1. crearea structurii Reteta si a listei duble
+//    operatii: creareReteta, afisareReteta, stergereReteta
 //				creareNod, inserareNodPozitie, inserareNodSortat, stergereNod
 //				afisareLista
 
@@ -153,7 +153,50 @@ void inserareNodPozitie(Nod** lista, Reteta* reteta, int poz)
 	}
 }
 
-// (*) aditional: inserare sortata pe baza procentului de compensare
+// (*) aditional: inserare sortata (crescator) pe baza procentului de compensare
+void inserareNodSortat(Nod** lista, Reteta* reteta)
+{
+	Nod* nod = creareNod(reteta);
+
+	// daca lista este goala
+	if ((*lista) == NULL)
+	{
+		(*lista) = nod;
+	}
+	else
+	{
+		Nod* tmp = (*lista);
+		Nod* prv = NULL;
+		
+		// gasim pozitia corecta pt inserare
+		while (tmp && tmp->reteta->procentCompensare <= nod->reteta->procentCompensare)
+		{
+			prv = tmp;
+			tmp = tmp->next;
+		}
+
+		// suntem la inceputul listei
+		if (prv == NULL)
+		{
+			nod->next = (*lista);
+			(*lista)->prev = nod;
+			(*lista) = nod;
+		} 
+		// suntem la sfarsitul listei
+		else if (tmp == NULL)
+		{
+			prv->next = nod;
+			nod->prev = prv;
+		}
+		else
+		{
+			prv->next = nod;
+			nod->prev = prv;
+			nod->next = tmp;
+			tmp->prev = nod;
+		}
+	}
+}
 
 void stergereNod(Nod* nod)
 {
@@ -244,6 +287,9 @@ void stergereNodCriteriu(Nod** lista, unsigned char nrMed)
 	}
 }
 
+// 5.
+
+
 void main()
 {
 	Nod* lista = NULL;
@@ -277,9 +323,10 @@ void main()
 			Reteta* reteta = creareReteta(nrReteta, numePacient, numeMedic, statutSpecial, nrMedicamente, procentCompensare);
 			//afisareReteta(reteta);
 			inserareNodPozitie(&lista, reteta, nrReteta - 1);
+			//inserareNodSortat(&lista, reteta);
 		}
 	}
-	//afisareLista(lista);
+	afisareLista(lista);
 
 	// 2.
 	int nrRetete = 0;
@@ -291,6 +338,8 @@ void main()
 	//afisareLista(lista);
 
 	// 4.
-	stergereNodCriteriu(&lista, 5);
-	afisareLista(lista);
+	//stergereNodCriteriu(&lista, 5);
+	//afisareLista(lista);
+
+	// 5.
 }
