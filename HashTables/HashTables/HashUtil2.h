@@ -8,7 +8,7 @@ typedef struct HashN
 	struct HashN* next;
 } HashNode, *PHashNode;
 
-typedef HashNode** HashTable;
+typedef HashNode** HashTable;	// array of pointers to hash nodes
 
 int fHash(const char* key)
 {

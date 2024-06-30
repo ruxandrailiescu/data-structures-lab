@@ -1,6 +1,7 @@
 1,Alex Ardelean,Dr. Popescu,Nu,3,20.5
 2,Ruxandra Iliescu,Dr. Ionescu,Nu,5,21.3
 3,Ana Boncu,Dr. Ionescu,Da,2,35.5
-6,Ambra Barbu,Dr. Popescu,Da,5,10.2
+6,Ambra Barbu,Dr. Alexandrescu,Da,5,10.2
 4,Sabina Andrici,Dr. Popescu,Da,3,15.5
 5,Tia Girica,Dr. Ionescu,Da,4,30.3
+2,Catrinel Iliescu,Dr. Ionescu,Da,3,20.5

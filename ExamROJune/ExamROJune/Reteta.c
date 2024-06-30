@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define LINE_SIZE 256
+#define HT_SIZE 10
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -288,7 +289,232 @@ void stergereNodCriteriu(Nod** lista, unsigned char nrMed)
 }
 
 // 5.
+// COLLISION MECHANISM - CHAINING
+typedef struct HashN
+{
+	Reteta* reteta;
+	struct HashN* next;
+} HashNode;
 
+typedef struct HashT
+{
+	HashNode** items;
+	int size;
+} HashTable;
+
+
+// initialize hash table
+void initHashTable(HashTable* hashTable, int size)
+{
+	hashTable->size = size;
+	hashTable->items = (HashNode**)malloc(sizeof(HashNode*) * size);
+	memset(hashTable->items, 0, sizeof(HashNode*) * size);
+}
+
+
+// hash function
+int fHash(int key, int size)
+{
+	return key % size;
+}
+
+
+// create hash node
+HashNode* createHashNode(Reteta* reteta)
+{
+	HashNode* node = NULL;
+	
+	if (reteta)
+	{
+		node = (HashNode*)malloc(sizeof(HashNode));
+		node->reteta = reteta;
+		node->next = NULL;
+	}
+
+	return node;
+}
+
+// insert function
+void putHashTable(HashTable* hashTable, Reteta* reteta)
+{
+	HashNode* node = createHashNode(reteta);
+	
+	if (node)
+	{
+		int index = fHash(reteta->nrReteta, hashTable->size);	// calculate the index where the node should be placed
+		node->next = hashTable->items[index];
+		hashTable->items[index] = node;
+	}
+}
+
+// display hash table
+void displayHashTable(HashTable* hashTable)
+{
+	for (int i = 0; i < hashTable->size; i++)
+	{
+		printf("\n------------ Bucket %d: -------------\n", i);
+		HashNode* current = hashTable->items[i];
+		while (current)		// iterate through collision list if it exists
+		{
+			afisareReteta(current->reteta);
+			current = current->next;
+		}
+	}
+}
+
+// free hash table memory
+void freeHashTable(HashTable* hashTable)
+{
+	for (int i = 0; i < hashTable->size; i++)
+	{
+		HashNode* current = hashTable->items[i];
+		while (current)
+		{
+			HashNode* tmp = current;
+			current = current->next;
+			stergereReteta(tmp->reteta);
+			free(tmp);
+		}
+	}
+	free(hashTable->items);
+}
+
+// functie de populare hash table pentru doctor (primit ca parametru)
+void populateHashTableDoctor(Nod* lista, HashTable* hashTable, const char* numeMedic)
+{
+	Nod* current = lista;
+	while (current)
+	{
+		if (strcmp(current->reteta->numeMedic, numeMedic) == 0)
+		{
+			// copiem reteta pt a NU partaja memorie intre cele doua structuri de date
+			// (lista dubla si tabela de dispersie)
+			Reteta* copyReteta = creareReteta(
+				current->reteta->nrReteta,
+				current->reteta->numePacient,
+				current->reteta->numeMedic,
+				current->reteta->statutSpecial,
+				current->reteta->nrMedicamente,
+				current->reteta->procentCompensare
+			);
+			putHashTable(hashTable, copyReteta);
+		}
+		current = current->next;
+	}
+}
+
+
+// COLLISION MECHANISM -- LINEAR PROBING
+// we need a different struct
+typedef struct HTable
+{
+	Reteta** items;
+	int size;
+} HashTableOA;
+
+// we need a resizing function (for the exam unlikely, but in general we do)
+void resizeHT(HashTableOA*);
+
+// display hash table
+void displayHashTableOA(Reteta**, int);
+
+// initialize hash table
+void initHashTableOA(HashTableOA* hashTable, int size)
+{
+	hashTable->size = size;
+	hashTable->items = (Reteta**)malloc(sizeof(Reteta*) * size);
+	memset(hashTable->items, 0, sizeof(Reteta*) * size);
+}
+
+// linear probing
+int linearProbing(HashTableOA* hashTable, int key, int index)
+{
+	while (hashTable->items[index] != NULL)
+	{
+		index++;
+		if (hashTable->size == index)
+		{
+			printf("\n---------------------------- Hash Table Items Before Resize ----------------------------\n");
+			displayHashTableOA(hashTable->items, hashTable->size);
+			resizeHT(hashTable);
+			index = fHash(key, hashTable->size);
+		}
+	}
+	return index;
+}
+
+// insert function
+void putHashTableOA(HashTableOA* hashTable, Reteta* reteta)
+{
+	if (hashTable->size == 0)
+	{
+		initHashTableOA(hashTable, HT_SIZE);
+	}
+
+	int index = fHash(reteta->nrReteta, hashTable->size);
+
+	if (hashTable->items[index] != NULL)
+	{
+		int key = reteta->nrReteta;
+		index = linearProbing(hashTable, key, index);
+	}
+
+	hashTable->items[index] = reteta;	// partajeaza memorie cu lista dubla la nivelul structurilor de tip Reteta
+}
+
+void resizeHT(HashTableOA* hashTable)
+{
+	Reteta** aux = hashTable->items;
+	
+	initHashTableOA(hashTable, hashTable->size * 3);
+
+	for (int index = 0; index < hashTable->size / 3; index++)
+	{
+		Reteta* reteta = aux[index];
+		if (reteta)
+		{
+			putHashTableOA(hashTable, reteta);
+		}
+	}
+}
+
+// populate hash table for doctor
+void populateHashTableDoctorOA(Nod* lista, HashTableOA* hashTable, const char* numeMedic)
+{
+	Nod* current = lista;
+	while (current)
+	{
+		if (strcmp(current->reteta->numeMedic, numeMedic) == 0)
+		{
+			putHashTableOA(hashTable, current->reteta);
+		}
+		current = current->next;
+	}
+}
+
+void displayHashTableOA(Reteta** items, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		printf("\n------------ Bucket %d: -------------\n");
+		afisareReteta(items[i]);
+	}
+}
+
+void displayHashTableArray(HashTableOA* hashTable)
+{
+	for (int i = 0; i < hashTable->size; i++)
+	{
+		if (hashTable->items[i] != NULL)
+		{
+			afisareReteta(hashTable->items[i]);
+		}
+		else
+		{
+			printf("Bucket %d: Empty\n", i);
+		}
+	}
+}
 
 void main()
 {
@@ -325,13 +551,14 @@ void main()
 			inserareNodPozitie(&lista, reteta, nrReteta - 1);
 			//inserareNodSortat(&lista, reteta);
 		}
+		fclose(pFile);
 	}
-	afisareLista(lista);
+	//afisareLista(lista);
 
 	// 2.
 	int nrRetete = 0;
 	calcNrRetete(lista, &nrRetete, 1);
-	printf("\nNr retete: %d\n", nrRetete);
+	//printf("\nNr retete: %d\n", nrRetete);
 
 	// 3.
 	actualizareProcentComp(&lista, "Ana Boncu", 45.5);
@@ -342,4 +569,18 @@ void main()
 	//afisareLista(lista);
 
 	// 5.
+	// CHAINING
+	HashTable hashTable;
+	initHashTable(&hashTable, HT_SIZE);
+	populateHashTableDoctor(lista, &hashTable, "Dr. Ionescu");
+	displayHashTable(&hashTable);
+
+	freeHashTable(&hashTable);
+	printf("\n-------------- LINEAR PROBING ---------------\n");
+
+	// LINEAR PROBING
+	HashTableOA hashTable1 = { .items = NULL, .size = 0 };
+	populateHashTableDoctorOA(lista, &hashTable1, "Dr. Ionescu");
+	//displayHashTableOA(hashTable1.items, hashTable1.size);
+	displayHashTableArray(&hashTable1);
 }
