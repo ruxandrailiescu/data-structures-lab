@@ -6,7 +6,7 @@
 #include <malloc.h>
 #include <stdbool.h>
 
-
+// 1.
 typedef struct File
 {
 	char* identifier;
@@ -126,6 +126,70 @@ void displayTree(TreeNode* root, int level)
 	}
 }
 
+// 2.
+void displayGreaterThanDate(TreeNode* root, const char* date)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+
+	if (strcmp(root->info->createdDate, date) > 0)
+	{
+		displayFile(root->info);
+	}
+
+	displayGreaterThanDate(root->left, date);
+	displayGreaterThanDate(root->right, date);
+}
+
+// 3.
+void countFilesReadOnly(TreeNode* root, int* num)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+
+	if (root->info->readOnly == true)
+	{
+		(*num)++;
+	}
+
+	countFilesReadOnly(root->left, num);
+	countFilesReadOnly(root->right, num);
+}
+
+// 4.
+double calcSizeAndCount(TreeNode* root, int* filesCount)
+{
+	if (root == NULL)
+	{
+		return 0;
+	}
+
+	double totalSize = root->info->size;
+	(*filesCount)++;
+
+	totalSize += calcSizeAndCount(root->left, filesCount);
+	totalSize += calcSizeAndCount(root->right, filesCount);
+
+	return totalSize;
+}
+
+double avgFileSize(TreeNode* root, int* filesCount)
+{
+	double totalSize = calcSizeAndCount(root, filesCount);
+	if ((*filesCount) == 0)
+	{
+		return 0.0;
+	}
+	return totalSize / (*filesCount);
+}
+
+// 5.
+
+
 void main()
 {
 	TreeNode* root = NULL;
@@ -165,4 +229,17 @@ void main()
 	}
 
 	displayTree(root, 0);
+
+	// 2.
+	displayGreaterThanDate(root, "2023/12/13");
+
+	// 3.
+	int filesReadOnly = 0;
+	countFilesReadOnly(root, &filesReadOnly);
+	printf("\nNum of files with read only access: %d\n", filesReadOnly);
+
+	// 4.
+	int filesCount = 0;
+	double avgSize = avgFileSize(root, &filesCount);
+	printf("\nAvg file size: %.2f\n", avgSize);
 }

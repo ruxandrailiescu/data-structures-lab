@@ -6,7 +6,6 @@ File with the following attributes: file identifier (char*), file size (unsigned
 
 1. Create a Binary Search Tree to store at least 7 entries for which data is taken from a text file. Insertion should be 
 implemented recursively, and the search key should be the file identifier. (2p)
-(*) additional: transform in AVL Binary Tree and implement specific methods
 
 2. Write the function that prints only the files that have the created date greater than a given value specified as a 
 parameter. (1p)
@@ -24,3 +23,10 @@ the files should be updated. The function is called in the main() and the result
 6. Write the function for saving the files of a specific owner, given as a parameter, in a Heap structure in which the 
 priority key is represented by the file size. The new data structure does NOT share data with the Binary Search Tree and 
 all the nodes should be displayed (array manipulation) in the main function after complete creation of the structure. (2.5p)
+
+(*) additional: structure traversal (preorder, inorder, postorder)
+(*) additional: deletion with keeping the total order semantic (leaf node, one descendant, two descendants)
+(*) additional: calculating the height of a tree
+(*) additional: concatenating two trees 
+
+(*) additional: transform in AVL Binary Tree and implement specific methods

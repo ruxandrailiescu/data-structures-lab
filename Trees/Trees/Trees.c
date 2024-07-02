@@ -24,12 +24,16 @@ void main()
 			reference = atoi(token);
 			Student* stud = createStudent(name, income, reference);
 			upsert(&root, stud);
-			DisplayTreeStructure(root, 0);
-			printf("-----------------------------------------\n");
+			//DisplayTreeStructure(root, 0);
+			//printf("-----------------------------------------\n");
 		}
 
 		DisplayTreeStructure(root, 0);
-		deleteNodeByKey(&root, 255);
-		DisplayTreeStructure(root, 0);
+		//deleteNodeByKey(&root, 255);
+		//DisplayTreeStructure(root, 0);
+
+		int numNodes = 0;
+		countNodesGreaterThan(root, 32, &numNodes);
+		printf("\nNodes greater than: %d\n", numNodes);
 	}
 }

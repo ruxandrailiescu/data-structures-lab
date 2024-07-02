@@ -178,6 +178,7 @@ void deleteNodeByKey(TreeNode** root, unsigned char key)
 				free(*root);
 				*root = NULL;
 			}
+			// the node has 1 descendant
 			else if ((*root)->left == NULL || (*root)->right == NULL)
 			{
 				TreeNode* tmp = *root;
@@ -185,6 +186,7 @@ void deleteNodeByKey(TreeNode** root, unsigned char key)
 				deleteStudent(tmp->info);
 				free(tmp);
 			}
+			// the node has 2 descendants
 			else
 			{
 				deleteFullNode(root, &(*root)->right);
@@ -201,6 +203,22 @@ void deleteNodeByKey(TreeNode** root, unsigned char key)
 	hint: starting from getHeight function
 */
 
+void countNodesGreaterThan(TreeNode* root, unsigned char key, int* count)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+
+	if (root->info->reference.intRef > key)
+	{
+		(*count)++;
+	}
+
+	countNodesGreaterThan(root->left, key, count);
+	countNodesGreaterThan(root->right, key, count);
+}
+
 //int countNodesGreaterThan(TreeNode* root, unsigned char key)
 //{
 //	if (root->info->reference.intRef > key)
@@ -210,5 +228,18 @@ void deleteNodeByKey(TreeNode** root, unsigned char key)
 //	else if (root->info->reference.intRef < key)
 //	{
 //		countNodesGreaterThan(root->left, key);
+//	}
+//}
+
+//void countNodesGreaterThan(TreeNode* root, unsigned char key, int* count)
+//{
+//	if (root == NULL)
+//	{
+//		return;
+//	}
+//	
+//	if (root->info->reference.intRef > key)
+//	{
+//		(*count) += getHeight(root->left) + getHeight(root->right);
 //	}
 //}
