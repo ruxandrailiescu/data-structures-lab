@@ -1,0 +1,24 @@
+Subject #1E / 05.07.2023
+
+Implement a C application for managing all the arrivals in a train station. For this, you can use a Binary Search Tree 
+structure (BST). The tree node useful information is composed of a pointer to structure Arrival, which contains the 
+following attributes: train code (char*), coming from (char*), arrival time (char* - HH:MM), delay (unsigned short - 
+expressed in minutes), no of passengers (unsigned short).
+
+1. Create a Binary Search Tree having as key the attribute arrival time. The tree must have at least 7 entries that 
+are read from a file. (1p)
+
+2. Print all the arrivals in the reversed order of their arrival time. (0.5p)
+
+3. Write the function that returns the arrival time that is the last one to come in the train station. The value is 
+returned in the main() section and all the details of that arrival are displayed at the console. (1p)
+
+4. Write the function that counts how many arrivals have a delay. The value is returned in the main() section and 
+displayed at the console. (1p)
+
+5. Write the function that calculates the total number of passengers for the arrivals coming from a given value 
+passed as a parameter. The value is returned in the main() section and displayed at the console. (1p)
+
+6. Write the function that saves all the arrivals starting from the root of the tree all the way to a given node 
+(given as a parameter by its arrival time) in an array of pointers to be displayed (the array doesn't share memory 
+space with the BST implementation). (1.5p)
