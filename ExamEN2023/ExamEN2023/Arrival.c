@@ -163,6 +163,20 @@ void getArrivalsWithDelay(TreeNode* root, int* count)
 	getArrivalsWithDelay(root->right, count);
 }
 
+// OR
+int getDelayedArrivals(TreeNode* root)
+{
+	if (root)
+	{
+		if (root->info->delay > 0)
+			return 1 + getDelayedArrivals(root->left) + getDelayedArrivals(root->right);
+		else
+			return getDelayedArrivals(root->left) + getDelayedArrivals(root->right);
+	}
+	else
+		return 0;
+}
+
 // 5.
 void getTotalNoPassengers(TreeNode* root, int* noPass, const char* comingFrom)
 {
@@ -269,7 +283,8 @@ void main()
 		printf("\n-----------------------------------------\n");
 		int count = 0;
 		getArrivalsWithDelay(root, &count);
-		printf("No of arrivals with delays: %d\n", count);
+		int count1 = getDelayedArrivals(root);
+		printf("No of arrivals with delays: %d / %d\n", count, count1);
 
 		// 5.
 		printf("\n-----------------------------------------\n");
