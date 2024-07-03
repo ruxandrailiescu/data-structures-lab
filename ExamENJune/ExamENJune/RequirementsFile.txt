@@ -24,9 +24,18 @@ the files should be updated. The function is called in the main() and the result
 priority key is represented by the file size. The new data structure does NOT share data with the Binary Search Tree and 
 all the nodes should be displayed (array manipulation) in the main function after complete creation of the structure. (2.5p)
 
-(*) additional: structure traversal (preorder, inorder, postorder)
-(*) additional: deletion with keeping the total order semantic (leaf node, one descendant, two descendants)
-(*) additional: calculating the height of a tree
-(*) additional: concatenating two trees 
+(*) additional (BST):
+	- structure traversal (preorder, inorder, postorder)
+	- deletion with keeping the total order semantic (leaf node, one descendant, two descendants)
+	- calculating the height of a tree
+	- concatenating two trees 
 
-(*) additional: transform in AVL Binary Tree and implement specific methods
+(*) additional (AVL Trees): transform in AVL Binary Tree and implement specific methods
+
+(*) additional (Priority Queues/Heap):
+	- insert(S, x): insert element x into set S
+	- max(S): return element of S with the highest key
+	- extract(S): min/max, return element x and remove it from the set
+	- changePrio(S, x, k): change the value of x key from the set at k
+	- deleting an element
+	- heapsort
