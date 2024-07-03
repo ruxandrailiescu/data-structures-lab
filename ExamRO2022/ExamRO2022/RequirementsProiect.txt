@@ -1,0 +1,28 @@
+Bilet 2 / 22.06.2022
+
+Implementati o aplicatie in limbajul C ce rezolva probleme specifice proiectelor de investitii.
+
+1. Definiti structura Proiect ce contine: cod proiect (unsigned int), titlu proiect (char*), beneficiar (char*), 
+numar executanti (unsigned char), buget alocat (float).
+
+Creati o tabela de dispersie cu cel putin 5 proiecte ale caror date sunt preluate dintr-un fisier text. Cheia
+de cautare in tabela de dispersie este beneficiar. (1p)
+
+2. Afisati elementele din tabela creata mai sus prin traversarea intregii structuri conform mecanismului de 
+tratare a coliziunilor. La consola de executie se vor afisa urmatoarele date: cod proiect, beneficiar. (0.5p)
+
+3. Implementati functia care returneaza bugetul total de investitii al unui beneficiar specificat ca parametru 
+de intrare al functiei. Se iau in considerare proiectele salvate in tabela de dispersie creata mai sus. Functia 
+implementata se apeleaza in functia main(), iar rezultatul apelului se afiseaza in consola de executie a 
+aplicatiei. (1.5p)
+
+4. Implementati functia care modifica denumirea unui beneficiar pentru proiectele salvate in tabela de dispersie 
+creata mai sus. Beneficiarul a carui denumire este modificata reprezinta parametru de intrare al functiei, 
+impreuna cu noua denumire a sa. Functia implementata se apeleaza in functia main(), iar tabela de dispersie se 
+va afisa la consola conform cerintei 2. (1.5p)
+
+5. Implementati functia care salveaza intr-o lista simpla proiectele (din tabela de mai sus) cu un buget alocat 
+peste un nivel specificat ca parametru de intrare al functiei. Datele sunt preluate din tabela de dispersie creata 
+mai sus si nu sunt partajate zone de memorie heap intre cele doua structuri (tabela si lista). Functia implementata 
+se apeleaza in functia main(), iar rezultatul apelului (lista simpla) se afiseaza in consola de executie a 
+aplicatiei. (1.5p)
