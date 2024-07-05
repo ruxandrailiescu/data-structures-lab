@@ -1,0 +1,6 @@
+120,Nordis Mamaia,2,Ionescu Mihai,1000
+234,Complex Herastrau,6,Burcea Teodor,2000
+56,Nordis Mamaia,1,Iliescu Ruxandra,1500
+78,Phoenicia Hotel,4,Mihai Ion,5000
+23,Nobu Barcelona,2,Istrate Ana,10000
+89,Hotel Dubai,1,Istrate Alex,20000
