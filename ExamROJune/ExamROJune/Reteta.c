@@ -516,7 +516,7 @@ void displayHashTableArray(HashTableOA* hashTable)
 	}
 }
 
-void main()
+void reteta()
 {
 	Nod* lista = NULL;
 	FILE* pFile = fopen("DataReteta.txt", "r");

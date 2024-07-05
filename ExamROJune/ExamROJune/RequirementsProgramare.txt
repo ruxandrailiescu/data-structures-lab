@@ -1,0 +1,28 @@
+Bilet 3 / 05.06.2024
+
+Implementati o aplicatie in limbajul C ce rezolva probleme de gestionare a programarilor clientilor unui cabinet 
+stomatologic.
+
+1. Definiti structura Programare ce contine: data programare (char*), numele clientului (char*), durata programare in 
+numar de ore (float), servicii efectuate (char*), cost programare in expresie monetara RON (int).
+
+Creati o lista de liste cu cel putin 5 programari ale caror date sunt preluate dintr-un fisier text. Crearea structurii 
+se realizeaza prin apel repetat al unei functii de inserare, iar campul dupa care se realizeaza gruparea este data 
+programare. (2p)
+
+2. Implementati functia care determina valoarea totala a programarilor efectuate la o anumita data. Data programarii 
+este specificata ca parametru de intrare al functiei. Functia implementata se apeleaza in functia main(), iar rezultatul 
+apelului se afiseaza in consola de executie a aplicatiei. (1p)
+
+3. Implementati functia care modifica costul unei programari specificata prin numele clientului in lista de parametri 
+ai functiei. Functia implementata se apeleaza in functia main(), iar rezultatul apelului se afiseaza in consola de 
+executie a aplicatiei. (1p)
+
+4. Implementati functia care sterge programarile ale caror durate sunt mai mici decat un prag specificat ca parametru. 
+Functia implementata se apeleaza in functia main(), iar rezultatul apelului se afiseaza in consola de executie a 
+aplicatiei. (2.5p)
+
+5. Implementati functia care returneaza din lista de liste o stiva cu programarile care au aceleasi servicii efectuate, 
+specificate ca parametru de intrare al functiei. Datele sunt preluate din lista de liste creata mai sus si nu sunt partajate 
+zone de memorie heap intre cele doua structuri (lista de liste si stiva). Functia implementata se apeleaza in functia 
+main(), iar rezultatul apelului (stiva de programari) se afiseaza in consola de executie a aplicatiei. (2.5p)
