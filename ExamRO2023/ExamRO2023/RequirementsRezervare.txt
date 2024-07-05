@@ -1,0 +1,24 @@
+Bilet 4 / 06.06.2023
+
+Implementati o aplicatie in limbajul C ce rezolva probleme de gestionare a unor rezervari hoteliere.
+
+1. Definiti structura Rezervare ce contine: id rezervare (unsigned int), denumire hotel (char*), numar camere 
+rezervate (unsigned char), nume client (char*), suma de plata RON (float).
+
+Creati un arbore binar de cautare cu cel putin 5 rezervari ale caror date sunt preluate dintr-un fisier text. 
+Crearea structurii se realizeaza prin apel repetat al unei functii de inserare, iar cheia de cautare in structura 
+este id rezervare. (1p)
+
+2. Implementati functia care determina numarul total de camere rezervate din nodurile frunza ale structurii 
+arborescente. Functia implementata se apeleaza in functia main(), iar rezultatul apelului se afiseaza in consola 
+de executie a aplicatiei. (1p)
+
+3. Implementati functia care determina inaltimea structurii arborescente ca numar de niveluri. Functia implementata 
+se apeleaza in functia main(), iar rezultatul apelului se afiseaza in consola de executie a aplicatiei. (1p)
+
+4. Implementati functia care sterge nodul radacina al structurii arborescente. Functia implementata se apeleaza in 
+functia main(), iar arborele se afiseaza in inordine la consola de executie a aplicatiei. (1.5p)
+
+5. Implementati functia care salveaza intr-un vector toate valorile de tip id rezervare plasate pe drumul de la 
+radacina de arbore pana la un nod specificat ca parametru al functiei prin id rezervare. Functia implementata se 
+apeleaza in functia main(), iar rezultatul apelului (vector) se afiseaza in consola de executie a aplicatiei. (1.5p)
