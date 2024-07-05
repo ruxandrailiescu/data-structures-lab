@@ -1,0 +1,26 @@
+Subject #2E / 06.06.2024
+
+Implement a C application for managing the connection requests to a server. For this you will define the structure 
+Request with the following attributes: request id (unsigned int), request size (unsigned int), request priority 
+(unsigned short), source IP (char*), and destination IP (char*).
+
+1. Create a double linked list of requests with at least 7 entries for which data is taken from a text file. The 
+Requests are inserted into the list so that the elements are kept in ascending order by their size attribute. (2p)
+
+2. Write the function that prints all the entries in the structure in descending order of their size. (1p)
+
+3. Write the function that counts how many requests originate from the same IP address. The function should return 
+the value in the main function and the result should be displayed at the console. (1p)
+
+4. Write the function for updating the request priority for a given request id. The new priority is given as a 
+parameter together with the value for the request id. Print all the elements from the list in the main function 
+to check for result. (1p)
+
+5. Write the function for deleting all the requests that have the destination IP the same as a value given as a 
+parameter. The function is called in the main() function and the result is validated by displaying all the remaining 
+elements. (1.5p)
+
+6. Write the function for creating a Hash Table with all the requests found in the list. Collision mechanism is 
+linear probing, and the search key is the request size attribute. The list shares HEAP memory space with the elements 
+found in the new structure and all the nodes should be displayed (array manipulation) in the main function after 
+complete creation of the structure. (2.5p)

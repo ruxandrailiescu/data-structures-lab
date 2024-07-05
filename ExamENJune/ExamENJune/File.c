@@ -367,7 +367,7 @@ void enqueueFilesByOwner(TreeNode* root, PQueue* pQueue, const char* owner)
 	enqueueFilesByOwner(root->right, pQueue, owner);
 }
 
-void main()
+void file()
 {
 	// MEMORY IS NOT DEALLOCATED IN THIS IMPLEMENTATION
 
