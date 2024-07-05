@@ -1,0 +1,19 @@
+Subject #1E / 18.06.2022
+
+Implement a C application for managing the rooms in a hotel. For this, you will use a Hash Table implementation that 
+manages collisions via chained lists. Structure Room, which is the useful information stored in the structure is created 
+with the following attributes: floor (unsigned short), room no. (unsigned short), room type (char*), price (unsigned double).
+
+1. Create a hash table with at least 7 entries that are read from a file. The key is the attribute floor and the collision 
+avoidance mechanism is chaining. (1p)
+
+2. Print all the rooms in the hash table and the clustered index they are part of. (0.5p)
+
+3. Write the function that determines the number of rooms for a given floor passed by parameter. The function is called 
+in the main() function and the result is displayed in the console. (1.5p)
+
+4. Write the function that creates a double-linked list with all the rooms that have a price higher than a given value, 
+passed as a parameter for the function. The list does NOT share heap memory space with the hash table. The function will 
+return the new structure to the main() and will display its content. (1.5p)
+
+5. Write the function that deletes all the entries from the double-linked list for a given room type. (1.5p)
