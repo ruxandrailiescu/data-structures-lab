@@ -1,0 +1,7 @@
+2,210,single,500
+1,110,double,700
+2,250,double,750
+3,350,double,750
+2,270,single,500
+1,115,single,300
+3,320,penthouse,1000
