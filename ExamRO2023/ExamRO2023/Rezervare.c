@@ -217,7 +217,7 @@ void salvareIdVector(TreeNode* root, unsigned int** vectorId, int* noEl, unsigne
 	}
 }
 
-void main()
+void rezervare()
 {
 	TreeNode* root = NULL;
 

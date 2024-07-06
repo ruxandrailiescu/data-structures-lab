@@ -1,0 +1,27 @@
+Bilet 2 / 06.06.2023
+
+Implementati o aplicatie in limbajul C ce rezolva probleme specifice proiectelor de investitii.
+
+1. Definiti structura Proiect ce contine: cod proiect (unsigned int), titlu proiect (char*), beneficiar (char*), numar 
+executanti (unsigned char), buget alocat (float).
+
+Creati o structura lista dubla cu cel putin 5 proiecte de investitii ale caror date sunt preluate dintr-un fisier text. 
+Crearea structurii se realizeaza prin apel repetat al unei functii de inserare a unui proiect in interiorul listei pe baza 
+unui criteriu definit. (1p)
+
+2. Implementati functia care determina numarul de proiecte avand numarul de executanti peste un prag specificat ca parametru 
+al functiei. Functia implementata se apeleaza in functia main(), iar rezultatul apelului se afiseaza in consola de executie 
+a aplicatiei. (1p)
+
+3. Implementati functia care actualizeaza bugetul proiectelor avand beneficiar specificat ca parametru al functiei. Actualizarea 
+se realizeaza pe baza unui procent precizat in lista de parametri ai functiei. Functia implementata se apeleaza in functia 
+main(), iar rezultatul apelului se valideaza prin traversarea listei duble in ambele sensuri. (1p)
+
+4. Implementati functia care sorteaza nodurile in lista dubla de mai sus avand buget alocat criteriu de ordonare. Functia 
+implementata se apeleaza in functia main(), iar rezultatul apelului se valideaza prin traversarea listei duble in ambele 
+sensuri. (1.5p)
+
+5. Implementati functia care salveaza intr-o structura de tip Heap datele proiectelor pentru acelasi beneficiar precizat ca 
+parametru al functiei. Cheia structurii Heap este cod proiect, iar cele doua structuri (lista dubla si Heap) NU partajeaza 
+memorie la nivelul datelor de tip Proiect. Functia implementata se apeleaza in functia main(), iar rezultatul apelului 
+(vector) se afiseaza in consola de executie a aplicatiei. (1.5p)
